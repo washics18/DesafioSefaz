@@ -29,12 +29,14 @@
 <td><c:out value="${user.senha}" /></td>
 <td><c:out value="${user.telefone}" /></td>
 <td><a href="UserController?action=edit&id=<c:out value="${user.userid}"/>">Update</a></td>
-<td><a href="UserController?action=edit&id=<c:out value="${user.userdid}"/>">Delete</a></td>
+<td><a href="UserController?action=delete&id=<c:out value="${user.userid}"/>">Delete</a></td>
 </tr>
 </c:forEach>
 </tbody>
 </table>
-<p><a href="UserController?action=insert">Add User</a></p>
+<p><a href="user.jsp">Add User</a></p>
+<a href="index.jsp">Index</a>
+
 
 </body>
 </html>

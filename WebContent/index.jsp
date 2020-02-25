@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<jsp:forward page="/UserController?action=listUser" />
+<a href="UserController?action=listUser">Listar Usuários</a>
 
 </body>
 </html>

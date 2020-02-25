@@ -2,33 +2,42 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Properties;
 
 public class DbUtil {
 	
-private static Connection connection = null;
+	private static Connection connection = null;
+	private static String user = "washics18";
+	private static String password = "camisa10";
 	
-	public static Connection getConnection() {
-		if(connection  != null)
-			return connection;
-	else
-	{try {
-		Properties prop = new Properties();
-		String user = "washics18";
-		String password = "camisa10";
-		Class.forName("com.mysql.jdbc.Driver");
-		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/userdb", user, password);
-	
-		
-	} catch (ClassNotFoundException e) {
-		e.printStackTrace();
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-	return connection;
-	}
+	static {
+		conectar();
 	}
 
+	
+	
+	private DbUtil() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void conectar() {
+		try {
+			
+			if (connection == null) {
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				connection = DriverManager.getConnection(
+						"jdbc:mysql://localhost:3306/userdb?useTimezone=true&serverTimezone=America/Sao_Paulo",
+						user, password);
+				
+				connection.setAutoCommit(false);
+				System.out.println("Conectou");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Connection getConnection() {
+		return connection;
+	}
 
 }
