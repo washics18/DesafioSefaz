@@ -59,7 +59,6 @@ public class UserController extends HttpServlet {
 		user.setNome(request.getParameter("nome"));
 		user.setEmail(request.getParameter("email"));
 		user.setSenha(request.getParameter("senha"));
-		user.setTelefone(request.getParameter("telefone"));
 		String userid = request.getParameter("userid");
 		if (userid == null || userid.isEmpty()) {
 			dao.addUser(user);

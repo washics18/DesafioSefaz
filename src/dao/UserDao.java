@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Telefone;
 import model.User;
 import util.DbUtil;
 
@@ -20,13 +22,25 @@ public class UserDao {
 
 	public void addUser(User user) {
 		try {
-			String sql = "insert into users (Nome, Email, Senha, Telefone) values (?, ?, ?, ?)";
-			try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+			String sql = "insert into users (Nome, Email, Senha) values (?, ?, ?)";
+			try (PreparedStatement preparedStatement = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
 				preparedStatement.setString(1, user.getNome());
 				preparedStatement.setString(2, user.getEmail());
 				preparedStatement.setString(3, user.getSenha());
-				preparedStatement.setString(4, user.getTelefone());
 				preparedStatement.execute();
+				
+				ResultSet rs = preparedStatement.getGeneratedKeys();
+				int generatedKey = 0;
+				
+				if(rs.next()) {
+					generatedKey = rs.getInt(1);
+				}
+				
+				TelefoneDao foneDao = new TelefoneDao();
+				for(Telefone fone : user.getTelefones()) {
+					fone.setUserId(generatedKey);
+					foneDao.addTelefone(fone);
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -48,11 +62,10 @@ public class UserDao {
 	public void updteUser(User user) {
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("update users set Nome=?, Email=?, Senha=?, Telefone=?" + "where userid=?");
+					.prepareStatement("update users set Nome=?, Email=?, Senha=?" + "where userid=?");
 			preparedStatement.setString(1, user.getNome());
 			preparedStatement.setString(2, user.getEmail());
 			preparedStatement.setString(3, user.getSenha());
-			preparedStatement.setString(4, user.getTelefone());
 			preparedStatement.setInt(5, user.getUserid());
 			preparedStatement.executeUpdate();
 
@@ -74,7 +87,6 @@ public class UserDao {
 						user.setNome(rs.getString("Nome"));
 						user.setEmail(rs.getString("Email"));
 						user.setSenha(rs.getString("Senha"));
-						user.setTelefone(rs.getString("Telefone"));
 						listaDeUsuario.add(user);
 					}
 				}
@@ -98,7 +110,7 @@ public class UserDao {
 				user.setNome(rs.getString("Nome"));
 				user.setEmail(rs.getString("Email"));
 				user.setSenha(rs.getString("Email"));
-				user.setTelefone(rs.getString("Telefone"));
+				
 			}
 
 		} catch (SQLException e) {
