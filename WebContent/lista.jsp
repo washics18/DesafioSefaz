@@ -5,10 +5,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<script type"text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <body>
 
-<a href="UserController?action=listUser">Listar Usuários</a>
+<h2>Listar Usuários no Sistema</h2>
+
+	
+
+<a href="UserController?action=listUser"><input type="button" value="Listar Usuários"></a>
 
 </body>
 </html>

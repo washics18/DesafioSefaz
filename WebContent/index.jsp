@@ -12,20 +12,21 @@
 <div class="login-page">
   <div class="form">
 
-<form action="LoginController" method="post" class="login-form">
+<form action="UserController?action=listUser" method="post" class="login-form">
 
 Login:
 <input type="text" id="login" name="login">
 <br/>
 
 Senha:
-<input type="text" id="senha" name="senha">
+<input type="password" id="senha" name="senha">
 <br/>
 
 <button type="submit" value="Logar">Logar</button> 
 
 
 </form>
+<h5 style="color:red">Usuário ou senha inválidos</h5>
 </div>
 </div>
 

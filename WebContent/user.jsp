@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page import="model.Telefone,java.util.List,java.util.Arrays" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +21,7 @@ List<Telefone> telefones = Arrays.asList(new Telefone(81,"92828282","celular",0)
 
  User Id : <input type="text" readonly="readonly" name="userid" value="<c:out value="${user.userid}" />" /> <br />
  Nome : <input type="text" name="nome" value="<c:out value="${user.nome}" />" /> <br />
- Email : <input type="text" name="email" value="<c:out value="${user.email}" />" /> <br />
+ Email : <input type="email" name="email" value="<c:out value="${user.email}" />" /> <br />
  Senha : <input type="text" name="senha" value="<c:out value="${user.senha}" />" /> <br />
  <input type="button" value="+ telefone" /> <br />
  <input type="hidden" name="telefones"  value="<%=telefones%>"/>

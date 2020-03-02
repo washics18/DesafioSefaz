@@ -60,7 +60,7 @@ public class TelefoneDao {
 
 	}
 
-	public List<Telefone> getPhone(int Id_users) {
+	public List<Telefone> getPhone(Integer Id_users) {
 		List<Telefone> listaDeTelefone = new ArrayList<>();
 		try {
 			String sql = "select * from phone where Id_users=? ;";

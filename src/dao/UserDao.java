@@ -23,24 +23,11 @@ public class UserDao {
 	public void addUser(User user) {
 		try {
 			String sql = "insert into users (Nome, Email, Senha) values (?, ?, ?)";
-			try (PreparedStatement preparedStatement = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
+			try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 				preparedStatement.setString(1, user.getNome());
 				preparedStatement.setString(2, user.getEmail());
 				preparedStatement.setString(3, user.getSenha());
 				preparedStatement.execute();
-				
-				ResultSet rs = preparedStatement.getGeneratedKeys();
-				int generatedKey = 0;
-				
-				if(rs.next()) {
-					generatedKey = rs.getInt(1);
-				}
-				
-				TelefoneDao foneDao = new TelefoneDao();
-				for(Telefone fone : user.getTelefones()) {
-					fone.setUserId(generatedKey);
-					foneDao.addTelefone(fone);
-				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -117,6 +104,21 @@ public class UserDao {
 			e.printStackTrace();
 		}
 		return user;
+
+	}
+	
+	public Boolean login(String email, String senha) {
+		Boolean login = null;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement("select * from users where email=? and senha=?");
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, senha);
+			ResultSet rs = preparedStatement.executeQuery();
+			login =  rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return login;
 
 	}
 

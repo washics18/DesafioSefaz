@@ -16,37 +16,42 @@
 <body>
 
 <center>
-  <h1>User Management</h1>
-        <h2>
-        <a href="user.jsp"><input type="button" value="Add New User"></a>
-             &nbsp;&nbsp;&nbsp;
-         <a href="list"><input type="button" value="List All Users"></a>
-             &nbsp;&nbsp;&nbsp;
-         <a href="index.jsp"><input type="button" value="Index"></a>
-         
-        </h2>
+  <h1>Cadastro de Telefones</h1>
         
-   
+   <form method="Post" action='TelefoneController' name="frmAddUser">
+
+ <input type="text" name="userid" value="${id}" hidden=true/>
+ 
+ <input type="text" name="name" value="${name}" hidden=true/>
+ DDD : <input type="number" name="ddd" value="<c:out value="${user.nome}" />" /> <br />
+ Número : <input type="text" name="numero" value="<c:out value="${user.email}" />" /> <br />
+ Tipo : 
+ <select name="tipo">
+  <option value="Casa">Casa</option> 
+  <option value="Celular" selected>Celular</option>
+  <option value="Trabalho">Trabalho</option>
+</select><br />
+ 
+ <input type="submit" value="Cadastrar">
+
+</form>
 <table id="minhaTabela" class="display" cellspacing="0"  width="100%">
-<caption><h2>List of Users</h2></caption>
+<caption><h2>Telefones de ${name}</h2></caption>
 <thead>
 <tr>
-<th>User Id</th>
-<th>Nome</th>
-<th>Email</th>
-<th>Senha</th>
-<th colspan=3>Action</th>
+<th>DDD</th>
+<th>Número</th>
+<th>Tipo</th>
+<th colspan=2>Action</th>
 </tr>
 </thead>
 <tbody>
-<c:forEach items="${users}" var="user">
+<c:forEach items="${telefones}" var="telefone">
 <tr>
-<td><c:out value="${user.userid}" /></td>
-<td><c:out value="${user.nome}" /></td>
-<td><c:out value="${user.email}" /></td>
-<td><c:out value="${user.senha}" /></td>
+<td><c:out value="${telefone.DDD}" /></td>
+<td><c:out value="${telefone.numero}" /></td>
+<td><c:out value="${telefone.tipo}" /></td>
 
-<td><a href="TelefoneController?id=${user.userid}&name=${user.nome}">Telefones</a></td>
 <td><a href="UserController?action=edit&id=<c:out value="${user.userid}"/>">Update</a></td>
 <td><a href="UserController?action=delete&id=<c:out value="${user.userid}"/>">Delete</a></td>
 </tr>

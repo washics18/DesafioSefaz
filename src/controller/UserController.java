@@ -17,6 +17,7 @@ public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String INSERT_OR_EDIT = "/user.jsp";
 	private static String LIST_USER = "/listUser.jsp";
+	private static String LIST_TELEFONES = "/listTelefones.jsp";
 	private UserDao dao;
 	
 
@@ -40,10 +41,17 @@ public class UserController extends HttpServlet {
 			User user = dao.getUserById(userId);
 			request.setAttribute("user", user);
 
+		}else if (action.equalsIgnoreCase("telefones")) {
+			forward = LIST_TELEFONES;
+			int userId = Integer.parseInt(request.getParameter("id"));
+			User user = dao.getUserById(userId);
+			request.setAttribute("user", user);
+
 		} else if (action.equalsIgnoreCase("listUser")) {
 			forward = LIST_USER;
 			request.setAttribute("users", dao.getAllUsers());
-		} else {
+		}
+		else {
 			forward = INSERT_OR_EDIT;
 		}
 		RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -54,12 +62,24 @@ public class UserController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		String action = request.getParameter("action");
+		
+		if(action.equalsIgnoreCase(LIST_USER)) {
+			String email = request.getParameter("login");
+			String senha = request.getParameter("senha");
+			
+			if(dao.login(email, senha)) {
+				RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+				request.setAttribute("users", dao.getAllUsers());
+				view.forward(request, response);
+			}
+		}
+		else {
+			
 		User user = new User();
 		user.setNome(request.getParameter("nome"));
 		user.setEmail(request.getParameter("email"));
 		user.setSenha(request.getParameter("senha"));
-		Object telefones = request.getParameter("telefones");
 		String userid = request.getParameter("userid");
 		if (userid == null || userid.isEmpty()) {
 			dao.addUser(user);
@@ -71,6 +91,7 @@ public class UserController extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
 		request.setAttribute("users", dao.getAllUsers());
 		view.forward(request, response);
+		}
 		
 	}
 
