@@ -7,6 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>All Users</title>
+<link rel="stylesheet" href="RESOURCES/CSS/estilo.css">
 
 <style type="text/css">
 
@@ -24,21 +25,27 @@
   <h1>Cadastro de Telefones</h1>
         
    <form method="Post" action='TelefoneController' name="frmAddUser">
+   <ul class="form-style-1"><li>
 
  <input type="text" name="userid" value="${id}" hidden=true/>
  
  <input type="text" name="name" value="${name}" hidden=true/>
- DDD : <input type="number" name="ddd" value="<c:out value="${user.nome}" />" /> <br />
- Número : <input type="text" name="numero" value="<c:out value="${user.email}" />" /> <br />
- Tipo : 
- <select name="tipo">
+ <table>
+ <tr>
+ <td>DDD :</td> <td><input type="number" name="ddd" value="<c:out value="${user.nome}" />" class="field-long" /></td> </tr> <br />
+ <tr>
+ <td>Número :</td> <td><input type="text" name="numero" value="<c:out value="${user.email}" />" /></td> </tr> <br />
+ <tr>
+ <td>Tipo :</td>
+ <td><select name="tipo">
   <option value="Casa">Casa</option> 
   <option value="Celular" selected>Celular</option>
   <option value="Trabalho">Trabalho</option>
-</select><br />
- 
+</select></td> </tr> <br />
+ </table>
  <input type="submit" value="Cadastrar">
-
+</li>
+</ul>
 </form>
 <table id="minhaTabela" class="display" cellspacing="0"  width="100%">
 <caption><h2>Telefones de ${name}</h2></caption>
