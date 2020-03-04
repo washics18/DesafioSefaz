@@ -7,8 +7,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>All Users</title>
-<link  rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-<script type"text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<style type="text/css">
+
+@import "media/CSS/jquery.dataTables.css"
+</style>
+<link  rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 
@@ -42,7 +47,9 @@
 <th>DDD</th>
 <th>Número</th>
 <th>Tipo</th>
-<th colspan=2>Action</th>
+<th>Update</th>
+<th>Delete</th>
+
 </tr>
 </thead>
 <tbody>
@@ -52,8 +59,8 @@
 <td><c:out value="${telefone.numero}" /></td>
 <td><c:out value="${telefone.tipo}" /></td>
 
-<td><a href="UserController?action=edit&id=<c:out value="${user.userid}"/>">Update</a></td>
-<td><a href="UserController?action=delete&id=<c:out value="${user.userid}"/>">Delete</a></td>
+<td><a href="UserController?action=edit&id=<c:out value="${user.userid}"/>"><img alt="Update" title="Update" src="RESOURCES/img/editar.png" width="20px" height="20px" ></a></td>
+<td><a href="UserController?action=delete&id=<c:out value="${user.userid}"/>"><img alt="Delete" title="Delete" src="RESOURCES/img/excluir.jpg" width="20px" height="20px" ></a></td>
 </tr>
 </c:forEach>
 </tbody>

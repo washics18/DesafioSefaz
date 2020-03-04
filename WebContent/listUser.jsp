@@ -7,8 +7,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>All Users</title>
+
 <link  rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-<script type"text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
 
@@ -20,14 +21,12 @@
         <h2>
         <a href="user.jsp"><input type="button" value="Add New User"></a>
              &nbsp;&nbsp;&nbsp;
-         <a href="list"><input type="button" value="List All Users"></a>
-             &nbsp;&nbsp;&nbsp;
          <a href="index.jsp"><input type="button" value="Index"></a>
          
         </h2>
         
    
-<table id="minhaTabela" class="display" cellspacing="0"  width="100%">
+<table id="minhaTabela" class="display" cellspacing="0" width="100%">
 <caption><h2>List of Users</h2></caption>
 <thead>
 <tr>
@@ -35,7 +34,10 @@
 <th>Nome</th>
 <th>Email</th>
 <th>Senha</th>
-<th colspan=3>Action</th>
+<th>Telefones</th>
+<th>Update</th>
+<th>Delete</th>
+
 </tr>
 </thead>
 <tbody>
@@ -46,9 +48,9 @@
 <td><c:out value="${user.email}" /></td>
 <td><c:out value="${user.senha}" /></td>
 
-<td><a href="TelefoneController?id=${user.userid}&name=${user.nome}">Telefones</a></td>
-<td><a href="UserController?action=edit&id=<c:out value="${user.userid}"/>">Update</a></td>
-<td><a href="UserController?action=delete&id=<c:out value="${user.userid}"/>">Delete</a></td>
+<td><a href="TelefoneController?id=${user.userid}&name=${user.nome}"><img alt="Telefones" title="Telefones" src="RESOURCES/img/phone.png" width="20px" height="20px" float="right" ></a></td>
+<td><a href="UserController?action=edit&id=<c:out value="${user.userid}"/>"><img alt="Update" title="Update" src="RESOURCES/img/editar.png" width="20px" height="20px" ></a></td>
+<td><a href="UserController?action=delete&id=<c:out value="${user.userid}"/>"><img alt="Delete" title="Delete" src="RESOURCES/img/excluir.jpg" width="20px" height="20px" ></a></td>
 </tr>
 </c:forEach>
 </tbody>

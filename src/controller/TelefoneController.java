@@ -40,6 +40,9 @@ public class TelefoneController extends HttpServlet {
 			request.setAttribute("id", id);
 		RequestDispatcher view = request.getRequestDispatcher(forward);
 		view.forward(request, response);
+		
+		
+		
 
 		
 	}
@@ -63,5 +66,9 @@ public class TelefoneController extends HttpServlet {
 		view.forward(request, response);
 		
 	}
+	
+	
+	
+	
 
 }

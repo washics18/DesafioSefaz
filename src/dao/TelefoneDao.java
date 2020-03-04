@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Telefone;
+import model.User;
 import util.DbUtil;
 
 public class TelefoneDao {
@@ -82,9 +83,12 @@ public class TelefoneDao {
 		}
 		return listaDeTelefone;
 	}
+	
+	
 
 	
 		
 	
 
 }
+
