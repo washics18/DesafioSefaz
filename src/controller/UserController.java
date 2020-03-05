@@ -41,15 +41,17 @@ public class UserController extends HttpServlet {
 			User user = dao.getUserById(userId);
 			request.setAttribute("user", user);
 
+		
+
+		} else if (action.equalsIgnoreCase("listUser")) {
+			forward = LIST_USER;
+			request.setAttribute("users", dao.getAllUsers());
+			
 		}else if (action.equalsIgnoreCase("telefones")) {
 			forward = LIST_TELEFONES;
 			int userId = Integer.parseInt(request.getParameter("id"));
 			User user = dao.getUserById(userId);
 			request.setAttribute("user", user);
-
-		} else if (action.equalsIgnoreCase("listUser")) {
-			forward = LIST_USER;
-			request.setAttribute("users", dao.getAllUsers());
 		}
 		else {
 			forward = INSERT_OR_EDIT;

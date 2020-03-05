@@ -15,21 +15,22 @@
 
 </head>
 <body>
+<a href="index.jsp"><img alt="Sair" title="Sair" src="RESOURCES/img/sair.jpg" width="30px" height="30px" ></a>
 
 <center>
   <h1>User Management</h1>
+  
+  <center><a href="listUser.jsp"><img alt="Adicionar" title="Adicionar" src="RESOURCES/img/adicionar.png" width="80px" height="80px" ></a></center>
         <h2>
         <a href="user.jsp"><input type="button" value="Add New User"></a>
-             &nbsp;&nbsp;&nbsp;
-         <a href="index.jsp"><input type="button" value="Index"></a>
-         
+                      
         </h2>
         
    
 <table id="minhaTabela" class="display" cellspacing="0" width="100%">
-<caption><h2>List of Users</h2></caption>
+<caption><h2 >List of Users</h2></caption>
 <thead>
-<tr>
+<tr style="color: blue;">
 <th>User Id</th>
 <th>Nome</th>
 <th>Email</th>
@@ -51,6 +52,7 @@
 <td><a href="TelefoneController?id=${user.userid}&name=${user.nome}"><img alt="Telefones" title="Telefones" src="RESOURCES/img/phone.png" width="20px" height="20px" float="right" ></a></td>
 <td><a href="UserController?action=edit&id=<c:out value="${user.userid}"/>"><img alt="Update" title="Update" src="RESOURCES/img/editar.png" width="20px" height="20px" ></a></td>
 <td><a href="UserController?action=delete&id=<c:out value="${user.userid}"/>"><img alt="Delete" title="Delete" src="RESOURCES/img/excluir.jpg" width="20px" height="20px" ></a></td>
+
 </tr>
 </c:forEach>
 </tbody>

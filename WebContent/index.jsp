@@ -10,6 +10,7 @@
 <body>
 
 <div class="login-page">
+<center><h2>Cadastro de Usuários</h2></center>
   <div class="form">
 
 <form action="UserController?action=listUser" method="post" class="login-form">
@@ -26,7 +27,7 @@ Senha:
 
 
 </form>
-<h5 style="color:red">Usuário ou senha inválidos</h5>
+
 </div>
 </div>
 

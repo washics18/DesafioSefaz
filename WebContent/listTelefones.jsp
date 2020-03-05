@@ -21,6 +21,8 @@
 </head>
 <body>
 
+<a href="index.jsp"><img alt="Sair" title="Sair" src="RESOURCES/img/sair.jpg" width="30px" height="30px" ></a>
+
 <center>
   <h1>Cadastro de Telefones</h1>
         
@@ -30,13 +32,13 @@
  <input type="text" name="userid" value="${id}" hidden=true/>
  
  <input type="text" name="name" value="${name}" hidden=true/>
- <table>
+ <table >
  <tr>
- <td>DDD :</td> <td><input type="number" name="ddd" value="<c:out value="${user.nome}" />" class="field-long" /></td> </tr> <br />
+ <td><b>DDD :</b></td> <td><input type="number" name="ddd" value="<c:out value="${user.nome}" />" class="field-long" /></td> </tr> <br />
  <tr>
- <td>Número :</td> <td><input type="text" name="numero" value="<c:out value="${user.email}" />" /></td> </tr> <br />
+ <td><b>Número :</b></td> <td><input type="text" name="numero" value="<c:out value="${user.email}" />" /></td> </tr> <br />
  <tr>
- <td>Tipo :</td>
+ <td><b>Tipo :</b></td>
  <td><select name="tipo">
   <option value="Casa">Casa</option> 
   <option value="Celular" selected>Celular</option>
@@ -50,7 +52,7 @@
 <table id="minhaTabela" class="display" cellspacing="0"  width="100%">
 <caption><h2>Telefones de ${name}</h2></caption>
 <thead>
-<tr>
+<tr style="color: blue;">
 <th>DDD</th>
 <th>Número</th>
 <th>Tipo</th>

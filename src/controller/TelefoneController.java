@@ -19,6 +19,7 @@ import model.User;
 public class TelefoneController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String LIST_TELEFONES = "/listTelefones.jsp";
+	private static String INSERT_OR_EDIT = "/listTelefones.jsp";
 	private TelefoneDao dao;
 	
 
