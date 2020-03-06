@@ -6,11 +6,21 @@ public class Telefone {
 	private int DDD;
 	private String numero;
 	private String tipo;
+	private int userId;
 
 	public Telefone() {}	
 	
 	public Telefone(int dDD, String numero, String tipo, int userId) {
 		super();
+		DDD = dDD;
+		this.numero = numero;
+		this.tipo = tipo;
+		this.userId = userId;
+	}
+	
+	public Telefone(int id,int dDD, String numero, String tipo, int userId) {
+		super();
+		this.Id = id;
 		DDD = dDD;
 		this.numero = numero;
 		this.tipo = tipo;
@@ -24,7 +34,6 @@ public class Telefone {
 		this.userId = userId;
 	}
 	
-	private int userId;
 	
 	public int getId() {
 		return Id;

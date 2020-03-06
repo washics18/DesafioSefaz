@@ -64,19 +64,10 @@ public class UserController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		RequestDispatcher view = null;
 		String action = request.getParameter("action");
-		
-		if(action.equalsIgnoreCase(LIST_USER)) {
-			String email = request.getParameter("login");
-			String senha = request.getParameter("senha");
-			
-			if(dao.login(email, senha)) {
-				RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
-				request.setAttribute("users", dao.getAllUsers());
-				view.forward(request, response);
-			}
-		}
-		else {
+		switch(action) {
+		case "save":
 			
 		User user = new User();
 		user.setNome(request.getParameter("nome"));
@@ -90,11 +81,26 @@ public class UserController extends HttpServlet {
 			dao.updteUser(user);
 
 		}
-		RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
+		view = request.getRequestDispatcher(LIST_USER);
 		request.setAttribute("users", dao.getAllUsers());
 		view.forward(request, response);
+			break;
+		default:
+			String email = request.getParameter("login");
+			String senha = request.getParameter("senha");
+			
+			if(dao.login(email, senha)) {
+				view = request.getRequestDispatcher(LIST_USER);
+				request.setAttribute("users", dao.getAllUsers());
+				view.forward(request, response);
+			}
+			else {
+				view = request.getRequestDispatcher("index.jsp");
+				request.setAttribute("errorMsg", false);
+				view.forward(request, response);
+			}
+			break;
 		}
-		
 	}
 
 }

@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class DbUtil {
 	
-	private static Connection connection = null;
+	private static Connection connection = null; // variavel para conexão com o banco de dados
 	private static String user = "washics18";
 	private static String password = "camisa10";
 	
@@ -21,12 +21,12 @@ public class DbUtil {
 
 	public static void conectar() {
 		try {
-			
-			if (connection == null) {
+			// conexão igual a null a conexão não foi criada e vai criar conexão com o banco de dados
+			if (connection == null) { 
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				connection = DriverManager.getConnection(
 						"jdbc:mysql://localhost:3306/userdb?useTimezone=true&serverTimezone=America/Sao_Paulo",
-						user, password);
+						user, password); //DriverManeger para o projeto acessar o endereço 
 				
 				connection.setAutoCommit(false);
 				System.out.println("Conectou");
@@ -37,7 +37,7 @@ public class DbUtil {
 	}
 
 	public static Connection getConnection() {
-		return connection;
+		return connection; // diferente de null já existe uma conexão e retornar a conexão
 	}
 
 }

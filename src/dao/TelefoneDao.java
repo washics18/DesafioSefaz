@@ -45,14 +45,27 @@ public class TelefoneDao {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deletePhoneByUserId(int userId) {
+		try {
+			String sql = "delete from phone where Id_users = '" + userId + "'";
+			try (PreparedStatement statement = connection.prepareStatement(sql)) {
+				statement.execute();
+			}
+			connection.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void updtePhone(Telefone telefone) {
 		try {
 			PreparedStatement preparedStatement = connection
-					.prepareStatement("update phone set DDD=?, Numero=?, Tipo=?, Id_users=?" + "where Id=?");
+					.prepareStatement("update phone set DDD=?, Numero=?, Tipo=? where Id=?");
 			preparedStatement.setInt(1, telefone.getDDD());
 			preparedStatement.setString(2, telefone.getNumero());
 			preparedStatement.setString(3, telefone.getTipo());
+			preparedStatement.setInt(4, telefone.getId());
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -84,7 +97,26 @@ public class TelefoneDao {
 		return listaDeTelefone;
 	}
 	
-	
+	public Telefone getPhoneById(Integer id) {
+		Telefone telefone = new Telefone();
+		try {
+			String sql = "select * from phone where id=? ;";
+			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+				stmt.setInt(1, id);
+				try (ResultSet rs = stmt.executeQuery()) {
+					while (rs.next()) {
+						telefone.setId(rs.getInt("Id"));
+						telefone.setDDD(rs.getInt("DDD"));
+						telefone.setNumero(rs.getString("Numero"));
+						telefone.setTipo(rs.getString("Tipo"));
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return telefone;
+	}
 
 	
 		

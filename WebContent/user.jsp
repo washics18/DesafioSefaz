@@ -22,7 +22,7 @@ List<Telefone> telefones = Arrays.asList(new Telefone(81,"92828282","celular",0)
 <a href="index.jsp"><img alt="Sair" title="Sair" src="RESOURCES/img/sair.jpg" width="30px" height="30px" ></a>
 <center style="padding-top:10%;"><a href="user.jsp"><img alt="Adicionar" title="Adicionar" src="RESOURCES/img/adicionar.png" width="80px" height="80px" ></a></center>
 <center><h2><b>Cadastro de Usuários<b></b></h2></center>
-<form method="Post" action='UserController' name="frmAddUser">
+<form method="Post" action='UserController?action=save' name="frmAddUser">
 <ul class="form-style-1"><li>
 <center>
 <table>

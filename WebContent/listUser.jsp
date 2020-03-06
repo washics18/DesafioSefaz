@@ -49,7 +49,7 @@
 <td><c:out value="${user.email}" /></td>
 <td><c:out value="${user.senha}" /></td>
 
-<td><a href="TelefoneController?id=${user.userid}&name=${user.nome}"><img alt="Telefones" title="Telefones" src="RESOURCES/img/phone.png" width="20px" height="20px" float="right" ></a></td>
+<td><a href="TelefoneController?action=list&id=${user.userid}&name=${user.nome}"><img alt="Telefones" title="Telefones" src="RESOURCES/img/phone.png" width="20px" height="20px" float="right" ></a></td>
 <td><a href="UserController?action=edit&id=<c:out value="${user.userid}"/>"><img alt="Update" title="Update" src="RESOURCES/img/editar.png" width="20px" height="20px" ></a></td>
 <td><a href="UserController?action=delete&id=<c:out value="${user.userid}"/>"><img alt="Delete" title="Delete" src="RESOURCES/img/excluir.jpg" width="20px" height="20px" ></a></td>
 

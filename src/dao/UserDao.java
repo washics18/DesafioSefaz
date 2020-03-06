@@ -12,14 +12,16 @@ import model.Telefone;
 import model.User;
 import util.DbUtil;
 
-public class UserDao {
+public class UserDao { // acesso direto ao usuário. classe Dao vai salvar e buscar no banco
 
 	private Connection connection;
-
+    
+	//quando criar o objeto UserDao vai gerar a conexão com o banco
 	public UserDao() {
-		connection = DbUtil.getConnection();
+		connection = DbUtil.getConnection(); // vai retornar a conexão com o banco de dados
 	}
-
+    
+	//metodo para
 	public void addUser(User user) {
 		try {
 			String sql = "insert into users (Nome, Email, Senha) values (?, ?, ?)";
@@ -36,6 +38,8 @@ public class UserDao {
 
 	public void deleteUser(int userId) {
 		try {
+			TelefoneDao telefoneDao = new TelefoneDao();
+			telefoneDao.deletePhoneByUserId(userId);
 			String sql = "delete from users where userid = '" + userId + "'";
 			try (PreparedStatement statement = connection.prepareStatement(sql)) {
 				statement.execute();
@@ -53,7 +57,7 @@ public class UserDao {
 			preparedStatement.setString(1, user.getNome());
 			preparedStatement.setString(2, user.getEmail());
 			preparedStatement.setString(3, user.getSenha());
-			preparedStatement.setInt(5, user.getUserid());
+			preparedStatement.setInt(4, user.getUserid());
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {

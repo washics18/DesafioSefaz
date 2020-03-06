@@ -26,17 +26,20 @@
 <center>
   <h1>Cadastro de Telefones</h1>
         
-   <form method="Post" action='TelefoneController' name="frmAddUser">
+   <form   method="Post" action='TelefoneController?action=${btnFormAction}' name="frmAddUser">
    <ul class="form-style-1"><li>
-
- <input type="text" name="userid" value="${id}" hidden=true/>
+   
+<input type="text" name="userid" value="${id}" hidden=true/>
  
  <input type="text" name="name" value="${name}" hidden=true/>
+ 
  <table >
+ <tr><td>
+ <input type="text" name="foneId" value="${fone.id}" hidden=true/></td> </tr> <br />
+ <tr>	
+ <td><b>DDD :</b></td> <td><input type="number" name="ddd" value="<c:out value="${fone.DDD}" />" class="field-long" /></td> </tr> <br />
  <tr>
- <td><b>DDD :</b></td> <td><input type="number" name="ddd" value="<c:out value="${user.nome}" />" class="field-long" /></td> </tr> <br />
- <tr>
- <td><b>Número :</b></td> <td><input type="text" name="numero" value="<c:out value="${user.email}" />" /></td> </tr> <br />
+ <td><b>Número :</b></td> <td><input type="text" name="numero" value="<c:out value="${fone.numero}" />" /></td> </tr> <br />
  <tr>
  <td><b>Tipo :</b></td>
  <td><select name="tipo">
@@ -45,7 +48,7 @@
   <option value="Trabalho">Trabalho</option>
 </select></td> </tr> <br />
  </table>
- <input type="submit" value="Cadastrar">
+ <input type="submit" name="btnFormTelefone" value="${btnFormTelefone}">
 </li>
 </ul>
 </form>
@@ -68,12 +71,14 @@
 <td><c:out value="${telefone.numero}" /></td>
 <td><c:out value="${telefone.tipo}" /></td>
 
-<td><a href="UserController?action=edit&id=<c:out value="${user.userid}"/>"><img alt="Update" title="Update" src="RESOURCES/img/editar.png" width="20px" height="20px" ></a></td>
-<td><a href="UserController?action=delete&id=<c:out value="${user.userid}"/>"><img alt="Delete" title="Delete" src="RESOURCES/img/excluir.jpg" width="20px" height="20px" ></a></td>
+<td><a href="TelefoneController?action=edit&name=${name }&userid=${id}&id=<c:out value="${telefone.id}"/>"><img alt="Update" title="Update" src="RESOURCES/img/editar.png" width="20px" height="20px" ></a></td>
+<td><a href="TelefoneController?action=delete&name=${name }&userid=${id}&id=<c:out value="${telefone.id}"/>"><img alt="Delete" title="Delete" src="RESOURCES/img/excluir.jpg" width="20px" height="20px" ></a></td>
 </tr>
 </c:forEach>
 </tbody>
 </table>
+
+
 
 </body>
 <script type="text/javascript">
