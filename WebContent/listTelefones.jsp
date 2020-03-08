@@ -20,11 +20,14 @@
 
 </head>
 <body>
-
+<a href="UserController?action=listUser" ><img alt="Lista de Usuários" title="Lista de Usuários" src="RESOURCES/img/lista.jpg" width="30px" height="30px" ></a>
 <a href="index.jsp"><img alt="Sair" title="Sair" src="RESOURCES/img/sair.jpg" width="30px" height="30px" ></a>
 
 <center>
-  <h1>Cadastro de Telefones</h1>
+  <h1 >Cadastro de Telefones</h1>
+  
+  <a href="listTelefones.jsp"><img alt="Telefones" title="Telefones" src="RESOURCES/img/phone.png" width="80px" height="80px" ></a>
+      
         
    <form   method="Post" action='TelefoneController?action=${btnFormAction}' name="frmAddUser">
    <ul class="form-style-1"><li>
@@ -33,7 +36,7 @@
  
  <input type="text" name="name" value="${name}" hidden=true/>
  
- <table >
+ <table  >
  <tr><td>
  <input type="text" name="foneId" value="${fone.id}" hidden=true/></td> </tr> <br />
  <tr>	
@@ -54,8 +57,8 @@
 </form>
 <table id="minhaTabela" class="display" cellspacing="0"  width="100%">
 <caption><h2>Telefones de ${name}</h2></caption>
-<thead>
-<tr style="color: blue;">
+<thead >
+<tr  style="color: blue;">
 <th>DDD</th>
 <th>Número</th>
 <th>Tipo</th>

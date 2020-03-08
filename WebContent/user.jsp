@@ -18,7 +18,7 @@ List<Telefone> telefones = Arrays.asList(new Telefone(81,"92828282","celular",0)
 </head>
 <body>
 
-<a href="listUser.jsp"><img alt="Inicio" title="Inicio" src="RESOURCES/img/inicio.jpg" width="30px" height="30px" ></a>
+<a href="UserController?action=listUser" ><img alt="Lista de Usuários" title="Lista de Usuários" src="RESOURCES/img/lista.jpg" width="30px" height="30px" ></a>
 <a href="index.jsp"><img alt="Sair" title="Sair" src="RESOURCES/img/sair.jpg" width="30px" height="30px" ></a>
 <center style="padding-top:10%;"><a href="user.jsp"><img alt="Adicionar" title="Adicionar" src="RESOURCES/img/adicionar.png" width="80px" height="80px" ></a></center>
 <center><h2><b>Cadastro de Usuários<b></b></h2></center>

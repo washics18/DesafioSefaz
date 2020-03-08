@@ -22,7 +22,7 @@
   
   <center><a href="listUser.jsp"><img alt="Adicionar" title="Adicionar" src="RESOURCES/img/adicionar.png" width="80px" height="80px" ></a></center>
         <h2>
-        <a href="user.jsp"><input type="button" value="Add New User"></a>
+        <a href="user.jsp"><input type="button" value="Add New User" style="font-size:20px"></a>
                       
         </h2>
         
