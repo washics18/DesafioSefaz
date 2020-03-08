@@ -1,5 +1,6 @@
 package controller;
 
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import dao.UserDao;
 import model.User;
 
-@WebServlet(name = "Usuarios", urlPatterns = { "/UserController" })
+@WebServlet(name = "Usuarios", urlPatterns = { "/UserController" }) 
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String INSERT_OR_EDIT = "/user.jsp";
@@ -24,18 +25,17 @@ public class UserController extends HttpServlet {
 	public UserController() {
 		dao = new UserDao();
 	}
-
+     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String forward = "";
-		String action = request.getParameter("action");
-
-		if (action.contentEquals("delete")) {
+		String action = request.getParameter("action"); 
+		if (action.contentEquals("delete")) { 
 			int userId = Integer.parseInt(request.getParameter("id"));
 			dao.deleteUser(userId);
 			forward = LIST_USER;
 			request.setAttribute("users", dao.getAllUsers());
-		} else if (action.equalsIgnoreCase("edit")) {
+		} else if (action.equalsIgnoreCase("edit")) { 
 			forward = INSERT_OR_EDIT;
 			int userId = Integer.parseInt(request.getParameter("id"));
 			User user = dao.getUserById(userId);
@@ -43,8 +43,8 @@ public class UserController extends HttpServlet {
 
 		
 
-		} else if (action.equalsIgnoreCase("listUser")) {
-			forward = LIST_USER;
+		} else if (action.equalsIgnoreCase("listUser")) {  
+			forward = LIST_USER; 
 			request.setAttribute("users", dao.getAllUsers());
 			
 		}else if (action.equalsIgnoreCase("telefones")) {

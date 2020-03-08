@@ -12,16 +12,16 @@ import model.Telefone;
 import model.User;
 import util.DbUtil;
 
-public class UserDao { // acesso direto ao usuário. classe Dao vai salvar e buscar no banco
+public class UserDao { 
 
 	private Connection connection;
     
-	//quando criar o objeto UserDao vai gerar a conexão com o banco
+	
 	public UserDao() {
-		connection = DbUtil.getConnection(); // vai retornar a conexão com o banco de dados
+		connection = DbUtil.getConnection(); 
 	}
     
-	//metodo para
+	
 	public void addUser(User user) {
 		try {
 			String sql = "insert into users (Nome, Email, Senha) values (?, ?, ?)";
@@ -29,18 +29,18 @@ public class UserDao { // acesso direto ao usuário. classe Dao vai salvar e busc
 				preparedStatement.setString(1, user.getNome());
 				preparedStatement.setString(2, user.getEmail());
 				preparedStatement.setString(3, user.getSenha());
-				preparedStatement.execute();
+				preparedStatement.execute(); 
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void deleteUser(int userId) {
+	public void deleteUser(int userId) { 
 		try {
 			TelefoneDao telefoneDao = new TelefoneDao();
 			telefoneDao.deletePhoneByUserId(userId);
-			String sql = "delete from users where userid = '" + userId + "'";
+			String sql = "delete from users where userid = '" + userId + "'"; 
 			try (PreparedStatement statement = connection.prepareStatement(sql)) {
 				statement.execute();
 			}
@@ -50,14 +50,14 @@ public class UserDao { // acesso direto ao usuário. classe Dao vai salvar e busc
 		}
 	}
 
-	public void updteUser(User user) {
+	public void updteUser(User user) { 
 		try {
 			PreparedStatement preparedStatement = connection
 					.prepareStatement("update users set Nome=?, Email=?, Senha=?" + "where userid=?");
-			preparedStatement.setString(1, user.getNome());
+			preparedStatement.setString(1, user.getNome()); 
 			preparedStatement.setString(2, user.getEmail());
 			preparedStatement.setString(3, user.getSenha());
-			preparedStatement.setInt(4, user.getUserid());
+			preparedStatement.setInt(4, user.getUserid()); 
 			preparedStatement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -66,30 +66,32 @@ public class UserDao { // acesso direto ao usuário. classe Dao vai salvar e busc
 
 	}
 
+	
 	public List<User> getAllUsers() {
-		List<User> listaDeUsuario = new ArrayList<>();
+		List<User> listaDeUsuario = new ArrayList<>(); 
 		try {
-			String sql = "select * from users";
-			try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+			String sql = "select * from users"; 
+			try (PreparedStatement stmt = connection.prepareStatement(sql)) { 
 				try (ResultSet rs = stmt.executeQuery()) {
 					while (rs.next()) {
-						User user = new User();
-						user.setUserid(rs.getInt("Userid"));
+						User user = new User(); 
+						user.setUserid(rs.getInt("Userid")); 
 						user.setNome(rs.getString("Nome"));
 						user.setEmail(rs.getString("Email"));
 						user.setSenha(rs.getString("Senha"));
-						listaDeUsuario.add(user);
+						listaDeUsuario.add(user); 
 					}
 				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return listaDeUsuario;
+		return listaDeUsuario; 
 	}
 
+	
 	public User getUserById(int userid) {
-		User user = new User();
+		User user = new User(); 
 
 		try {
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from users where userid=?");
@@ -113,7 +115,7 @@ public class UserDao { // acesso direto ao usuário. classe Dao vai salvar e busc
 	
 	public Boolean login(String email, String senha) {
 		Boolean login = null;
-		try {
+		try { 
 			PreparedStatement preparedStatement = connection.prepareStatement("select * from users where email=? and senha=?");
 			preparedStatement.setString(1, email);
 			preparedStatement.setString(2, senha);

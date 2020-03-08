@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
         </h2>
         
    
-<table id="minhaTabela" class="display" cellspacing="0" width="100%">
+<table border=1 id="minhaTabela" class="display" cellspacing="0" width="100%">
 <caption><h2 >List of Users</h2></caption>
 <thead>
 <tr style="color: blue;">

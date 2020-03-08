@@ -5,9 +5,9 @@
 - SQL
 
 ```
-create database sefaz;
+create database userdb;
 
-use sefaz;
+use userdb;
 
 create table users(
 userid int auto_increment primary key,
